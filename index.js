@@ -4,7 +4,7 @@ require("express-group-routes");
 
 const cors = require("cors");
 const app = express();
-const port = 5000;
+const port = process.env.PORT || 5000;
 
 // import routes
 const LocationRoutes = require("./routes/location");
