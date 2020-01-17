@@ -35,8 +35,8 @@ exports.create_ticket = (req, res) => {
   });
 };
 
-// show info
-exports.show_info = (req, res) => {
+// show all event
+exports.show = (req, res) => {
   Event.findAll({
     attributes: { exclude: ["location_id"] },
     include: [

@@ -1,6 +1,7 @@
 const models = require("../models");
 const Transaction = models.transaction;
 const User = models.user;
+const Ticket = models.ticket;
 
 // create purchase
 exports.purchase = (req, res) => {
@@ -23,4 +24,69 @@ exports.purchase = (req, res) => {
     //   user
     // });
   });
+};
+
+// show all Transaction
+exports.show = (req, res) => {
+  Transaction.findAll({
+    attributes: { exclude: ["ticket_id", "user_id"] },
+    include: [
+      {
+        as: "transactionTicket",
+        model: Ticket,
+        attributes: { exclude: ["createdAt", "updatedAt"] }
+      },
+      {
+        as: "transactionUser",
+        model: User,
+        attributes: { exclude: ["createdAt", "updatedAt"] }
+      }
+    ]
+  })
+    .then(result => res.send(result))
+    .catch(err => res.send(err));
+};
+
+// show all Transaction by User
+exports.showByUser = (req, res) => {
+  Transaction.findAll({
+    where: { user_id: req.params.id },
+    attributes: { exclude: ["ticket_id", "user_id"] },
+    include: [
+      {
+        as: "transactionTicket",
+        model: Ticket,
+        attributes: { exclude: ["createdAt", "updatedAt"] }
+      },
+      {
+        as: "transactionUser",
+        model: User,
+        attributes: { exclude: ["createdAt", "updatedAt"] }
+      }
+    ]
+  })
+    .then(result => res.send(result))
+    .catch(err => res.send(err));
+};
+
+// show Detail Transaction
+exports.showDetail = (req, res) => {
+  Transaction.findOne({
+    where: { id: req.params.id },
+    attributes: { exclude: ["ticket_id", "user_id"] },
+    include: [
+      {
+        as: "transactionTicket",
+        model: Ticket,
+        attributes: { exclude: ["createdAt", "updatedAt"] }
+      },
+      {
+        as: "transactionUser",
+        model: User,
+        attributes: { exclude: ["createdAt", "updatedAt"] }
+      }
+    ]
+  })
+    .then(result => res.send(result))
+    .catch(err => res.send(err));
 };
