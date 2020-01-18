@@ -1,24 +1,30 @@
 const errorHandler = require("../middleware/error_handler");
+const { validationResult } = require("express-validator");
 const { event, ticket, location } = require("../models");
 
 // create event
 exports.create = async (req, res) => {
-  // get request
-  const { location_id, name_event, description, image } = req.body;
-  const data = { location_id, name_event, description, image };
-  event
-    .create({ ...data })
-    .then(result => {
-      if (result) {
-        return res.status(201).json({
-          message: "success",
-          result
-        });
-      }
-    })
-    .catch(err => {
-      return errorHandler(res, 500, "Failed to create location");
-    });
+  const err = validationResult(req);
+  if (!err.isEmpty()) {
+    return errorHandler(res, 422, "Error Input", err.errors);
+  } else {
+    // get request
+    const { location_id, name_event, description, image } = req.body;
+    const data = { location_id, name_event, description, image };
+    event
+      .create({ ...data })
+      .then(result => {
+        if (result) {
+          return res.status(201).json({
+            message: "success",
+            result
+          });
+        }
+      })
+      .catch(err => {
+        return errorHandler(res, 400, "Failed to create event");
+      });
+  }
 };
 
 // create ticket

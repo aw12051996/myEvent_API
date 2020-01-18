@@ -1,6 +1,5 @@
 const express = require("express");
 require("express-group-routes");
-// const { check } = require("express-validator");
 const app = express();
 
 const validator = require("../middleware/validator");

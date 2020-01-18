@@ -22,7 +22,7 @@ exports.create = async (req, res) => {
         }
       })
       .catch(err => {
-        return errorHandler(res, 500, "Failed to create location");
+        return errorHandler(res, 400, "Failed to create event");
       });
   }
 };
