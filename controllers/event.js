@@ -52,7 +52,7 @@ exports.create_ticket = async (req, res) => {
 };
 
 // show all event
-exports.show = (req, res) => {
+exports.show = async (req, res) => {
   event
     .findAll({
       attributes: { exclude: ["location_id"] },
@@ -72,9 +72,11 @@ exports.show = (req, res) => {
     .then(result => {
       if (result) {
         return res.status(200).json(result);
+      } else {
+        return errorHandler(res, 422, "Event not found");
       }
     })
     .catch(err => {
-      return errorHandler(res, 500, "Failed to create location");
+      return errorHandler(res, 422, "Event not found");
     });
 };

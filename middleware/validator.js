@@ -54,3 +54,32 @@ exports.ticket = [
     .withMessage("Image is required")
     .isNumeric()
 ];
+
+exports.transaction = [
+  check("user_id")
+    .not()
+    .isEmpty()
+    .withMessage("User is required"),
+  check("ticket_id")
+    .not()
+    .isEmpty()
+    .withMessage("Ticket is required"),
+  check("date")
+    .not()
+    .isEmpty()
+    .withMessage("Date is required"),
+  check("qty")
+    .not()
+    .isEmpty()
+    .withMessage("Qty is required")
+    .isNumeric(),
+  check("total_price")
+    .not()
+    .isEmpty()
+    .withMessage("Total price is required")
+    .isNumeric(),
+  check("status")
+    .not()
+    .isEmpty()
+    .withMessage("Status is required")
+];

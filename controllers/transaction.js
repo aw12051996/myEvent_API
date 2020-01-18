@@ -1,29 +1,63 @@
-const models = require("../models");
-const Transaction = models.transaction;
-const User = models.user;
-const Ticket = models.ticket;
+const errorHandler = require("../middleware/error_handler");
+const { validationResult } = require("express-validator");
+const { transaction, user, ticket } = require("../models");
 
 // create purchase
 exports.purchase = (req, res) => {
-  const input = req.body;
-  Transaction.create({
-    user_id: input.user_id,
-    ticket_id: input.ticket_id,
-    date: input.date,
-    qty: input.qty,
-    total_price: input.total_price,
-    status: input.status,
-    attachment: input.attachment
-  }).then(result => {
-    User.findOne({
-      where: { id: result.user_id },
-      attributes: { exclude: ["id", "createdAt", "updatedAt"] }
-    }).then(user => res.send({ message: "success", result, user }));
-    // res.send({
+  const err = validationResult(req);
+  if (!err.isEmpty()) {
+    return errorHandler(res, 422, "Error Input", err.errors);
+  } else {
+    const { user_id, ticket_id, date, qty, total_price, status } = req.body;
+    const data = { user_id, ticket_id, date, qty, total_price, status };
 
-    //   user
-    // });
-  });
+    ticket
+      .findOne({
+        where: { id: data.ticket_id },
+        attributes: ["id", "stock"]
+      })
+      .then(result => {
+        const stock = result.stock;
+        const currentStock = stock - data.qty;
+        // return res.status(200).json(result.stock);
+        if (stock >= 1) {
+          if (currentStock >= 0) {
+            transaction
+              .create({ ...data })
+              .then(result => {
+                if (result) {
+                  user
+                    .findOne({
+                      where: { id: result.user_id },
+                      attributes: ["email"]
+                    })
+                    .then(user => {
+                      return res.status(201).json({
+                        message: "success",
+                        result,
+                        user
+                      });
+                    });
+                }
+              })
+              .catch(err => {
+                return errorHandler(res, 400, "Failed to create event");
+              });
+          } else {
+            return errorHandler(
+              res,
+              404,
+              `insufficient stock, you can only buy ${stock} ticket`
+            );
+          }
+        } else {
+          return errorHandler(res, 404, "Stock is empty");
+        }
+      })
+      .catch(err => {
+        return errorHandler(res, 404, "Stock is empty");
+      });
+  }
 };
 
 // show all Transaction
