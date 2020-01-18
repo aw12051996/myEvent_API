@@ -1,4 +1,5 @@
 const errorHandler = require("../middleware/error_handler");
+const { validationResult } = require("express-validator");
 const { location } = require("../models");
 
 // create location
@@ -9,7 +10,11 @@ exports.create = async (req, res) => {
   location
     .create({ ...data })
     .then(result => {
-      if (result) {
+      const err = validationResult(req);
+
+      if (!err.isEmpty()) {
+        return errorHandler(res, 422, "Error Input", err.errors);
+      } else {
         return res.status(201).json({
           message: "success",
           result
