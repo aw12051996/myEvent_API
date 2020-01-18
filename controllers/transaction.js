@@ -61,66 +61,93 @@ exports.purchase = (req, res) => {
 };
 
 // show all Transaction
-exports.show = (req, res) => {
-  Transaction.findAll({
-    attributes: { exclude: ["ticket_id", "user_id"] },
-    include: [
-      {
-        as: "transactionTicket",
-        model: Ticket,
-        attributes: { exclude: ["createdAt", "updatedAt"] }
-      },
-      {
-        as: "transactionUser",
-        model: User,
-        attributes: { exclude: ["createdAt", "updatedAt"] }
+exports.show = async (req, res) => {
+  transaction
+    .findAll({
+      attributes: { exclude: ["ticket_id", "user_id"] },
+      include: [
+        {
+          as: "transactionTicket",
+          model: Ticket,
+          attributes: { exclude: ["createdAt", "updatedAt"] }
+        },
+        {
+          as: "transactionUser",
+          model: User,
+          attributes: { exclude: ["createdAt", "updatedAt"] }
+        }
+      ]
+    })
+    .then(result => {
+      if (result) {
+        return res.status(200).json(result);
+      } else {
+        return errorHandler(res, 422, "Event not found");
       }
-    ]
-  })
-    .then(result => res.send(result))
-    .catch(err => res.send(err));
+    })
+    .catch(err => {
+      return errorHandler(res, 422, "Event not found");
+    });
 };
 
 // show all Transaction by User
 exports.showByUser = (req, res) => {
-  Transaction.findAll({
-    where: { user_id: req.params.id },
-    attributes: { exclude: ["ticket_id", "user_id"] },
-    include: [
-      {
-        as: "transactionTicket",
-        model: Ticket,
-        attributes: { exclude: ["createdAt", "updatedAt"] }
-      },
-      {
-        as: "transactionUser",
-        model: User,
-        attributes: { exclude: ["createdAt", "updatedAt"] }
+  transaction
+    .findAll({
+      where: { user_id: req.params.id },
+      attributes: { exclude: ["ticket_id", "user_id"] },
+      include: [
+        {
+          as: "transactionTicket",
+          model: Ticket,
+          attributes: { exclude: ["createdAt", "updatedAt"] }
+        },
+        {
+          as: "transactionUser",
+          model: User,
+          attributes: { exclude: ["createdAt", "updatedAt"] }
+        }
+      ]
+    })
+    .then(result => {
+      if (result) {
+        return res.status(200).json(result);
+      } else {
+        return errorHandler(res, 422, "Event not found");
       }
-    ]
-  })
-    .then(result => res.send(result))
-    .catch(err => res.send(err));
+    })
+    .catch(err => {
+      return errorHandler(res, 422, "Event not found");
+    });
 };
 
 // show Detail Transaction
 exports.showDetail = (req, res) => {
-  Transaction.findOne({
-    where: { id: req.params.id },
-    attributes: { exclude: ["ticket_id", "user_id"] },
-    include: [
-      {
-        as: "transactionTicket",
-        model: Ticket,
-        attributes: { exclude: ["createdAt", "updatedAt"] }
-      },
-      {
-        as: "transactionUser",
-        model: User,
-        attributes: { exclude: ["createdAt", "updatedAt"] }
+  transaction
+    .findOne({
+      where: { id: req.params.id },
+      attributes: { exclude: ["ticket_id", "user_id"] },
+      include: [
+        {
+          as: "transactionTicket",
+          model: Ticket,
+          attributes: { exclude: ["createdAt", "updatedAt"] }
+        },
+        {
+          as: "transactionUser",
+          model: User,
+          attributes: { exclude: ["createdAt", "updatedAt"] }
+        }
+      ]
+    })
+    .then(result => {
+      if (result) {
+        return res.status(200).json(result);
+      } else {
+        return errorHandler(res, 422, "Event not found");
       }
-    ]
-  })
-    .then(result => res.send(result))
-    .catch(err => res.send(err));
+    })
+    .catch(err => {
+      return errorHandler(res, 422, "Event not found");
+    });
 };
