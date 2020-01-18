@@ -29,21 +29,26 @@ exports.create = async (req, res) => {
 
 // create ticket
 exports.create_ticket = async (req, res) => {
-  const { event_id, name_ticket, price, stock } = req.body;
-  const data = { event_id, name_ticket, price, stock };
-  ticket
-    .create({ ...data })
-    .then(result => {
-      if (result) {
-        return res.status(201).json({
-          message: "success",
-          result
-        });
-      }
-    })
-    .catch(err => {
-      return errorHandler(res, 500, "Failed to create location");
-    });
+  const err = validationResult(req);
+  if (!err.isEmpty()) {
+    return errorHandler(res, 422, "Error Input", err.errors);
+  } else {
+    const { event_id, name_ticket, price, stock } = req.body;
+    const data = { event_id, name_ticket, price, stock };
+    ticket
+      .create({ ...data })
+      .then(result => {
+        if (result) {
+          return res.status(201).json({
+            message: "success",
+            result
+          });
+        }
+      })
+      .catch(err => {
+        return errorHandler(res, 400, "Failed to create ticket");
+      });
+  }
 };
 
 // show all event

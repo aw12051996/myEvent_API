@@ -7,7 +7,11 @@ const eventController = require("../controllers/event");
 
 app.group("/api/v1/event", router => {
   router.post("/create", validator.event, eventController.create);
-  router.post("/ticket/create", eventController.create_ticket);
+  router.post(
+    "/ticket/create",
+    validator.ticket,
+    eventController.create_ticket
+  );
   router.get("/get_info", eventController.show);
 });
 

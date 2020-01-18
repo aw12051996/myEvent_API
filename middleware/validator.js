@@ -33,3 +33,24 @@ exports.event = [
     .isEmpty()
     .withMessage("Image is required")
 ];
+
+exports.ticket = [
+  check("event_id")
+    .not()
+    .isEmpty()
+    .withMessage("Event is required"),
+  check("name_ticket")
+    .not()
+    .isEmpty()
+    .withMessage("Name Ticket is required"),
+  check("price")
+    .not()
+    .isEmpty()
+    .withMessage("Description is required")
+    .isNumeric(),
+  check("stock")
+    .not()
+    .isEmpty()
+    .withMessage("Image is required")
+    .isNumeric()
+];
