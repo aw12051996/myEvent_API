@@ -45,7 +45,7 @@ npm install
 
 ### Setup
 
-For the setup, first, running Xampp and make sure your MySQL and Apache services is running fine. Open your browser, then type the command `http://localhost/phpmyadmin/`, then create database for your project.
+For the setup, first, running Xampp and make sure your MySQL and Apache services is running fine. Open your browser, then type the command `http://localhost/phpmyadmin/`, then create database for your project. then import the database dump inside `database` folder in your project.
 
 Second, In project directory, you'll find `config.json` inside `config` folder. Open and edit the `development` configuration to match your database setup.
 
