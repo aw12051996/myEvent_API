@@ -9,7 +9,6 @@
   - [Run Application](#run-application)
 - [Built With](#built-with)
 - [Author](#author)
-- [License](#license)
 
 ## Getting Started
 
@@ -79,7 +78,3 @@ Second, test all endpoints in your project using the postman application.
 ## Author
 
 **Achmad Wahyudi** - (https://github.com/aw12051996)
-
-## License
-
-This project is licensed under the GNU General Public v3.0 License - see the [LICENSE](LICENSE) file for details
