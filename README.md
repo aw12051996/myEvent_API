@@ -24,7 +24,8 @@ Make sure all of these are properly installed in your system.
 | Git                     | [Windows](https://gitforwindows.org/) / [Linux](https://git-scm.com/download/linux) |
 | Node.js                 | [Link](https://nodejs.org/en/download/)                                             |
 | Xampp (apache & mysql)  | [Link](https://www.apachefriends.org/www.apachefriends.org)                         |
-| Postman                 | [Link](https://www.getpostman.com/downloads/)
+| Chrome                  | [Link](https://www.google.co.id/chrome/)                                            |
+| Postman                 | [Link](https://www.getpostman.com/downloads/)                                       |
 
 ### Installation
 
@@ -44,7 +45,9 @@ npm install
 
 ### Setup
 
-For the setup, first, running Xampp and make sure your MySQL and Apache services is running fine. In project directory, you'll find `config.json` inside `config` folder. Open and edit the `development` configuration to match your database setup.
+For the setup, first, running Xampp and make sure your MySQL and Apache services is running fine. Open your browser, then type the command `http://localhost/phpmyadmin/`, then create database for your project.
+
+Second, In project directory, you'll find `config.json` inside `config` folder. Open and edit the `development` configuration to match your database setup.
 
 ```
   "development": {
