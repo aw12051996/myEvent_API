@@ -60,7 +60,7 @@ Second, In project directory, you'll find `config.json` inside `config` folder. 
   },
 ```
 
-### Run Apllication
+### Run Application
 
 For the run application, first, open command prompt for windows or terminal for linux in your project folder.
 Then, run the project by typing the command
