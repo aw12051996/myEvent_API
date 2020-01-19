@@ -6,6 +6,7 @@
   - [Prerequisites](#prerequisites)
   - [Installation](#installation)
   - [Setup](#server-setup)
+  - [Run Aplication](#run-application)
 - [Built With](#built-with)
 - [Author](#author)
 - [License](#license)
@@ -23,6 +24,7 @@ Make sure all of these are properly installed in your system.
 | Git                     | [Windows](https://gitforwindows.org/) / [Linux](https://git-scm.com/download/linux) |
 | Node.js                 | [Link](https://nodejs.org/en/download/)                                             |
 | Xampp (apache & mysql)  | [Link](https://www.apachefriends.org/www.apachefriends.org)                         |
+| Postman                 | [Link](https://www.getpostman.com/downloads/)
 
 ### Installation
 
@@ -54,6 +56,16 @@ For the setup, first, running Xampp and make sure your MySQL and Apache services
     "operatorsAliases": false
   },
 ```
+
+### Run Apllication
+
+For the run application, first, open command prompt for windows or terminal for linux in your project folder.
+Then, run the project by typing the command
+
+```
+npm start
+```
+Second, test all endpoints in your project using the postman application.
 
 ## Built With
 
