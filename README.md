@@ -1,7 +1,5 @@
 # MyEVent
 
-A growing co-working space management application that will make the life easier. coHyPe has some features which able to manage everything a co-working space needed, such as checkin, checkout, room, customer, profile management. It's simple. It's awesome.
-
 ## Table of Contents
 
 - [Getting Started](#getting-started)
@@ -28,13 +26,15 @@ Make sure all of these are properly installed in your system.
 
 ### Installation
 
-First, clone this repository into your system.
+First, install all applications listed on prerequisites.
+
+Second, clone this repository into your system.
 
 ```
-git clone https://github.com/exneval/cohype.git
+git clone https://github.com/aw12051996/myEvent_API.git
 ```
 
-Then, install all the packages that described in `package.json` of both `client` and `server` directories.
+Then, install all the packages that described in `package.json` of project directories.
 
 ```
 npm install
@@ -42,7 +42,7 @@ npm install
 
 ### Setup
 
-For the server setup, first, make sure your MySQL services is running fine. In `server` directory, you'll find `config.json` inside `config` folder. Open and edit the `development` configuration to match your database setup.
+For the setup, first, running Xampp and make sure your MySQL and Apache services is running fine. In project directory, you'll find `config.json` inside `config` folder. Open and edit the `development` configuration to match your database setup.
 
 ```
   "development": {
