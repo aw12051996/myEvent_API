@@ -20,12 +20,11 @@ Before starting to install the project, there're some things that need to be don
 
 Make sure all of these are properly installed in your system.
 
-| Application     | Download                                                                            |
-| ------------    | ----------------------------------------------------------------------------------- |
-| Git             | [Windows](https://gitforwindows.org/) / [Linux](https://git-scm.com/download/linux) |
-| Node.js         | [Link](https://nodejs.org/en/download/)                                             |
-| Xampp (apache)  | [Link](https://www.apachefriends.org/www.apachefriends.org)                         |
-| MySQL           | [Link](https://www.mysql.com/downloads/)                                            |
+| Application             | Download                                                                            |
+| ----------------------- | ----------------------------------------------------------------------------------- |
+| Git                     | [Windows](https://gitforwindows.org/) / [Linux](https://git-scm.com/download/linux) |
+| Node.js                 | [Link](https://nodejs.org/en/download/)                                             |
+| Xampp (apache & mysql)  | [Link](https://www.apachefriends.org/www.apachefriends.org)                         |
 
 ### Installation
 
