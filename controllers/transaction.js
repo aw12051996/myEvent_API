@@ -74,12 +74,12 @@ exports.show = async (req, res) => {
       include: [
         {
           as: "transactionTicket",
-          model: Ticket,
+          model: ticket,
           attributes: { exclude: ["createdAt", "updatedAt"] }
         },
         {
           as: "transactionUser",
-          model: User,
+          model: user,
           attributes: { exclude: ["createdAt", "updatedAt"] }
         }
       ]
@@ -105,12 +105,12 @@ exports.showByUser = (req, res) => {
       include: [
         {
           as: "transactionTicket",
-          model: Ticket,
+          model: ticket,
           attributes: { exclude: ["createdAt", "updatedAt"] }
         },
         {
           as: "transactionUser",
-          model: User,
+          model: user,
           attributes: { exclude: ["createdAt", "updatedAt"] }
         }
       ]
@@ -136,12 +136,12 @@ exports.showDetail = (req, res) => {
       include: [
         {
           as: "transactionTicket",
-          model: Ticket,
+          model: ticket,
           attributes: { exclude: ["createdAt", "updatedAt"] }
         },
         {
           as: "transactionUser",
-          model: User,
+          model: user,
           attributes: { exclude: ["createdAt", "updatedAt"] }
         }
       ]
