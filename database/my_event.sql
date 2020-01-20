@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 19 Jan 2020 pada 08.09
+-- Generation Time: 20 Jan 2020 pada 16.20
 -- Versi Server: 10.1.25-MariaDB
 -- PHP Version: 5.6.31
 
@@ -43,7 +43,7 @@ CREATE TABLE `events` (
 --
 
 INSERT INTO `events` (`id`, `location_id`, `name_event`, `description`, `image`, `createdAt`, `updatedAt`) VALUES
-(1, 1, 'sdkp;', 'ljs;l', 'akjs;', '2020-01-18 05:03:48', '2020-01-18 05:03:48');
+(5, 19, 'Red Dynasty Paintball Park', 'Mau liburan tapi males kena macet? Yuk habiskan waktu akhir pekan ini di jakarta dengan berolahraga paintball. Yuk buruan booking tempat sebelum penuh. (wa 0812 1212 3822)', 'https://home.eventeventapp.com/photo_event/5c88c23f0f8a4_avatar.jpg', '2020-01-20 14:40:06', '2020-01-20 14:40:06');
 
 -- --------------------------------------------------------
 
@@ -65,8 +65,7 @@ CREATE TABLE `locations` (
 --
 
 INSERT INTO `locations` (`id`, `city`, `detail_location`, `url`, `createdAt`, `updatedAt`) VALUES
-(1, 'Bandung', 'Jl. Diponegoro No.22, Citarum, Kec. Bandung Wetan, Kota Bandung, Jawa Barat 40115', 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.903495072448!2d107.61551041431701!3d-6.90214356946382!2m3!1f0!2f0!3f0!3m2!1i1024!2i768.1!3m3!1m2!1s0x2e68e64c77da38f7%3A0xf11188e031a29110!2sJl.%20Diponegoro%20No.22%2C%20Citarum%2C%20Kec.%20Bandu', '2020-01-16 07:36:18', '2020-01-16 07:36:18'),
-(17, 'jsd;ldjs;', 'jds;ljsdl;', '', '2020-01-18 04:39:02', '2020-01-18 04:39:02');
+(19, 'Jakarta', 'Jalan Taman Soka, Kalideres', 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.943345211913!2d106.70709561476876!3d-6.138313995555604!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e6a02a7e9312fdf%3A0x6b712179d2899023!2sJl.%20Taman%20Soka%2C%20Pegadungan%2C%20Kec.%20Ka', '2020-01-20 14:32:05', '2020-01-20 14:32:05');
 
 -- --------------------------------------------------------
 
@@ -126,7 +125,8 @@ CREATE TABLE `tickets` (
 --
 
 INSERT INTO `tickets` (`id`, `event_id`, `name_ticket`, `price`, `stock`, `createdAt`, `updatedAt`) VALUES
-(2, 1, 'sdkp;', 100000, 1, '2020-01-18 05:50:07', '2020-01-18 05:50:07');
+(5, 5, 'FREE EQUIPMENT HIRE', 200000, 10, '2020-01-20 15:08:22', '2020-01-20 15:08:22'),
+(6, 5, 'SEMI AUTOMATIC PAINTBALL GUN', 300000, 10, '2020-01-20 15:09:03', '2020-01-20 15:09:03');
 
 -- --------------------------------------------------------
 
@@ -152,8 +152,7 @@ CREATE TABLE `transactions` (
 --
 
 INSERT INTO `transactions` (`id`, `user_id`, `ticket_id`, `date`, `qty`, `total_price`, `status`, `attachment`, `createdAt`, `updatedAt`) VALUES
-(9, 1, 2, '2020-01-18 09:14:50', 1, 300000, 0, NULL, '2020-01-18 10:18:16', '2020-01-18 10:18:16'),
-(10, 1, 2, '2020-01-18 09:14:50', 1, 300000, 0, NULL, '2020-01-18 10:29:58', '2020-01-18 10:29:58');
+(20, 1, 5, '2020-01-18 09:14:50', 2, 400000, 0, NULL, '2020-01-20 15:12:07', '2020-01-20 15:12:07');
 
 -- --------------------------------------------------------
 
@@ -237,12 +236,12 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `events`
 --
 ALTER TABLE `events`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `locations`
 --
 ALTER TABLE `locations`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 --
 -- AUTO_INCREMENT for table `shedules`
 --
@@ -252,12 +251,12 @@ ALTER TABLE `shedules`
 -- AUTO_INCREMENT for table `tickets`
 --
 ALTER TABLE `tickets`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `transactions`
 --
 ALTER TABLE `transactions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 --
 -- AUTO_INCREMENT for table `users`
 --
@@ -289,8 +288,8 @@ ALTER TABLE `tickets`
 -- Ketidakleluasaan untuk tabel `transactions`
 --
 ALTER TABLE `transactions`
-  ADD CONSTRAINT `transactions_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `transactions_ibfk_2` FOREIGN KEY (`ticket_id`) REFERENCES `tickets` (`id`) ON UPDATE CASCADE;
+  ADD CONSTRAINT `transactions_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE,
+  ADD CONSTRAINT `transactions_ibfk_2` FOREIGN KEY (`ticket_id`) REFERENCES `tickets` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
