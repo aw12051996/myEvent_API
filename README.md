@@ -68,7 +68,7 @@ Then, run the project by typing the command
 npm start
 ```
 Second, test all endpoints in your project using the postman application.
-1. Create location ( method : POST ) -> Endpoint `http://localhost:5000/api/v1/location/create`
+#### 1. Create location ( method : POST ) -> Endpoint `http://localhost:5000/api/v1/location/create`
 example :
 ```
 { 
