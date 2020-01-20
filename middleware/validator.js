@@ -83,3 +83,37 @@ exports.transaction = [
     .isEmpty()
     .withMessage("Status is required")
 ];
+
+// exports.transaction = [
+//   ticket
+//     .findOne({
+//       where: { id: req.body[0].ticket_id }
+//     })
+//     .then(result => {
+//       const data0 = result.event_id;
+//       // result = result.event_id;
+//       // console.log(result.event_id);
+//       var i;
+//       var arr = ["true"];
+//       for (i = 1; i < data.length; i++) {
+//         ticket
+//           .findOne({
+//             where: { id: data[i].ticket_id }
+//           })
+//           .then(result => {
+//             const data1 = result.event_id;
+//             if (data0 === data1) {
+//               arr.push("true");
+//             } else {
+//               arr.push("false");
+//             }
+//             const hasil = arr.every((val, arr) => val === arr[0]);
+//             if (hasil === true) {
+//               console.log("success");
+//             } else {
+//               console.log("failed");
+//             }
+//           });
+//       }
+//     })
+// ];

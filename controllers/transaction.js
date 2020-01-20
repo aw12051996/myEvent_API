@@ -11,6 +11,12 @@ exports.purchase = (req, res) => {
     const { user_id, ticket_id, date, qty, total_price, status } = req.body;
     const data = { user_id, ticket_id, date, qty, total_price, status };
 
+    // transaction.bulkCreate(req.body, { returning: true }).then(result => {
+    //   res.send({
+    //     message: "success",
+    //     result
+    //   });
+    // });
     ticket
       .findOne({
         where: { id: data.ticket_id },

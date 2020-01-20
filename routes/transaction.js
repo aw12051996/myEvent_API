@@ -8,7 +8,7 @@ const transactionController = require("../controllers/transaction");
 app.group("/api/v1/transaction", router => {
   router.post(
     "/purchase",
-    validator.transaction,
+    // validator.transaction,
     transactionController.purchase
   );
   router.get("/get_info", transactionController.show);
