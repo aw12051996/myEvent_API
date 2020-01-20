@@ -87,6 +87,38 @@ example :
 	"image":"https://home.eventeventapp.com/photo_event/5c88c23f0f8a4_avatar.jpg" 
 }
 ```
+#### 3. Create Ticket ( method : POST ) -> Endpoint `http://localhost:5000/api/v1/event/ticket/create`
+example :
+```
+{
+	"event_id":5,
+	"name_ticket":"SEMI AUTOMATIC PAINTBALL GUN",
+	"price":300000,
+	"stock":10
+}
+```
+#### 4. Get Event ( method : GET ) -> Endpoint `http://localhost:5000/api/v1/event/get_info`
+#### 5. Purchase Ticket ( method : POST ) -> Endpoint `http://localhost:5000/api/v1/transaction/purchase`
+example :
+```
+{
+	"user_id":1,
+	"ticket_id":5,
+	"date":"2020-01-18 16:14:50",
+	"qty":2,
+	"total_price":"400000",
+	"status":0
+}
+```
+#### 6. Get All Transcation ( method : GET ) -> Endpoint `http://localhost:5000/api/v1/transaction/get_info`
+#### 7. Transcation Detail ( method : GET ) -> Endpoint `http://localhost:5000/api/v1/transaction/get_info/:id`
+```
+http://localhost:5000/api/v1/transaction/get_info/20
+```
+#### 8. Transcation Detail By User ( method : GET ) -> Endpoint `http://localhost:5000/api/v1/transaction/get_info/user/:id`
+```
+http://localhost:5000/api/v1/transaction/get_info/user/1
+```
 
 ## Built With
 
