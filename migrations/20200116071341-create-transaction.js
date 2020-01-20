@@ -15,8 +15,7 @@ module.exports = {
           model: "users",
           key: "id"
         },
-        onUpdate: "cascade",
-        onDelete: "cascade"
+        onUpdate: "cascade"
       },
       ticket_id: {
         type: Sequelize.INTEGER,
@@ -25,8 +24,7 @@ module.exports = {
           model: "tickets",
           key: "id"
         },
-        onUpdate: "cascade",
-        onDelete: "cascade"
+        onUpdate: "cascade"
       },
       date: {
         type: Sequelize.DATE

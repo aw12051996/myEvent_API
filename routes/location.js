@@ -2,10 +2,11 @@ const express = require("express");
 require("express-group-routes");
 const app = express();
 
+const validator = require("../middleware/validator");
 const locationController = require("../controllers/location");
 
 app.group("/api/v1/location", router => {
-  router.post("/create", locationController.create);
+  router.post("/create", validator.location, locationController.create);
 });
 
 module.exports = app;
